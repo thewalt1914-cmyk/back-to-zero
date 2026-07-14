@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Back to Zero | A Story to Read</title>
+    <meta
+      name="description"
+      content="An immersive, mobile-friendly story reading experience with chapter navigation."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="reading-header">
+        <div class="reading-header__top">
+          <div>
+            <p class="eyebrow">Featured story</p>
+            <h1>Back to Zero</h1>
+            <p class="header-subtitle">A story about the people who get you there · By Tyler Walter</p>
+          </div>
+          <div class="header-actions">
+            <button id="font-down" class="icon-button" type="button" aria-label="Decrease font size">A−</button>
+            <button id="font-up" class="icon-button" type="button" aria-label="Increase font size">A+</button>
+          </div>
+        </div>
+
+        <div class="progress-bar" aria-label="Reading progress">
+          <div id="progress-fill" class="progress-bar__fill"></div>
+        </div>
+
+        <div class="chapter-nav" aria-label="Chapter navigation">
+          <button id="prev-chapter" class="button button--ghost" type="button">← Previous</button>
+          <div id="chapter-pills" class="chapter-pills"></div>
+          <button id="next-chapter" class="button button--ghost" type="button">Next →</button>
+        </div>
+      </header>
+
+      <main class="reader-layout">
+        <section class="chapter-card">
+          <div class="chapter-card__meta">
+            <span id="chapter-label"></span>
+            <span id="chapter-count"></span>
+          </div>
+          <h2 id="chapter-title"></h2>
+          <div id="chapter-content" class="chapter-content"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
