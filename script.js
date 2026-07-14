@@ -125,8 +125,7 @@ const chapters = [
 ];
 
 const state = {
-  chapterIndex: 0,
-  fontSize: 1.05
+  chapterIndex: 0
 };
 
 const chapterLabel = document.getElementById('chapter-label');
@@ -137,8 +136,6 @@ const progressFill = document.getElementById('progress-fill');
 const chapterPills = document.getElementById('chapter-pills');
 const prevButton = document.getElementById('prev-chapter');
 const nextButton = document.getElementById('next-chapter');
-const fontDown = document.getElementById('font-down');
-const fontUp = document.getElementById('font-up');
 
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -175,7 +172,6 @@ function renderChapter() {
   progressFill.style.width = `${((state.chapterIndex + 1) / chapters.length) * 100}%`;
   prevButton.disabled = state.chapterIndex === 0;
   nextButton.disabled = state.chapterIndex === chapters.length - 1;
-  document.documentElement.style.setProperty('--reader-font-size', `${state.fontSize}rem`);
   renderChapterPills();
   saveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -188,14 +184,6 @@ function goToChapter(index) {
 
 prevButton.addEventListener('click', () => goToChapter(state.chapterIndex - 1));
 nextButton.addEventListener('click', () => goToChapter(state.chapterIndex + 1));
-fontDown.addEventListener('click', () => {
-  state.fontSize = Math.max(0.95, state.fontSize - 0.05);
-  renderChapter();
-});
-fontUp.addEventListener('click', () => {
-  state.fontSize = Math.min(1.3, state.fontSize + 0.05);
-  renderChapter();
-});
 
 chapterPills.addEventListener('click', (event) => {
   const button = event.target.closest('button[data-index]');

@@ -85,12 +85,6 @@ h2 {
   color: var(--muted);
 }
 
-.header-actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
 .icon-button,
 .button {
   border: 1px solid var(--border);
@@ -132,7 +126,16 @@ h2 {
   align-items: center;
   gap: 0.8rem;
   flex-wrap: wrap;
-  padding-top: 0.15rem;
+  padding: 0.45rem 0.55rem;
+  margin-top: 0.85rem;
+  position: sticky;
+  bottom: 0.9rem;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px var(--shadow);
+  backdrop-filter: blur(8px);
 }
 
 .chapter-pills {
@@ -227,17 +230,6 @@ h2 {
     align-items: stretch;
   }
 
-  .header-actions {
-    width: 100%;
-    justify-content: flex-start;
-    margin-top: 0.25rem;
-  }
-
-  .icon-button {
-    flex: 1;
-    justify-content: center;
-  }
-
   .reader-layout {
     grid-template-columns: 1fr;
   }
@@ -269,6 +261,8 @@ h2 {
   .chapter-nav {
     flex-direction: column;
     align-items: stretch;
+    border-radius: 18px;
+    padding: 0.55rem;
   }
 
   .chapter-nav .button {
