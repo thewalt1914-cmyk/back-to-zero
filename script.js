@@ -173,7 +173,11 @@ function renderChapter() {
   progressFill.style.width = `${((state.chapterIndex + 1) / chapters.length) * 100}%`;
   prevButton.disabled = state.chapterIndex === 0;
   nextButton.disabled = state.chapterIndex === chapters.length - 1;
-  bookCover.hidden = state.chapterIndex !== 0;
+
+  const isChapterOne = state.chapterIndex === 0;
+  bookCover.hidden = !isChapterOne;
+  bookCover.style.display = isChapterOne ? 'block' : 'none';
+
   renderChapterPills();
   saveState();
   window.scrollTo({ top: 0, behavior: 'smooth' });

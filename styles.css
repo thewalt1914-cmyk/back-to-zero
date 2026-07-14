@@ -36,6 +36,7 @@ textarea {
 }
 
 .book-cover {
+  display: block;
   background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
   color: #f7f7f2;
   border: 1px solid #2f2f2f;
@@ -43,6 +44,10 @@ textarea {
   padding: 2rem 1.4rem;
   margin-bottom: 1rem;
   box-shadow: 0 18px 40px rgba(17, 17, 17, 0.16);
+}
+
+.book-cover[hidden] {
+  display: none !important;
 }
 
 .book-cover__inner {
@@ -175,11 +180,12 @@ h2 {
   gap: 0.6rem;
   padding: 0.55rem 0.6rem;
   z-index: 30;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 999px;
-  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.12);
-  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px rgba(17, 17, 17, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .chapter-pills {
