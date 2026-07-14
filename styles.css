@@ -16,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   background: linear-gradient(135deg, #f7f7f2 0%, #eeeeea 100%);
   color: var(--text);
   line-height: 1.75;
@@ -33,6 +33,49 @@ textarea {
   max-width: 1280px;
   margin: 0 auto;
   padding: 1.2rem;
+}
+
+.book-cover {
+  background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+  color: #f7f7f2;
+  border: 1px solid #2f2f2f;
+  border-radius: 28px;
+  padding: 2rem 1.4rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 18px 40px rgba(17, 17, 17, 0.16);
+}
+
+.book-cover__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.book-cover__eyebrow {
+  margin: 0 0 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 0.74rem;
+  opacity: 0.8;
+}
+
+.book-cover h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.book-cover__subtitle,
+.book-cover__author {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.book-cover__subtitle {
+  margin-bottom: 0.35rem;
 }
 
 .reading-header {
@@ -121,42 +164,62 @@ h2 {
 }
 
 .chapter-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  width: min(92vw, 860px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  padding: 0.45rem 0.55rem;
-  margin-top: 0.85rem;
-  position: sticky;
-  bottom: 0.9rem;
-  z-index: 20;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid var(--border);
+  gap: 0.6rem;
+  padding: 0.55rem 0.6rem;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 999px;
-  box-shadow: 0 10px 24px var(--shadow);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.12);
+  backdrop-filter: blur(14px);
 }
 
 .chapter-pills {
   display: flex;
-  flex-wrap: wrap;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
   gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 0.1rem;
+  scrollbar-width: none;
+}
+
+.chapter-pills::-webkit-scrollbar {
+  display: none;
 }
 
 .chapter-pill {
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--text);
+  background: transparent;
+  color: var(--muted);
   padding: 0.45rem 0.7rem;
   cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
 }
 
 .chapter-pill.is-active {
   background: #111111;
   color: #ffffff;
   border-color: #111111;
+}
+
+.button {
+  background: transparent;
+  border-color: transparent;
+  padding: 0.6rem 0.8rem;
+}
+
+.button:hover {
+  background: rgba(17, 17, 17, 0.05);
 }
 
 .button:disabled,
@@ -170,6 +233,7 @@ h2 {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+  padding-bottom: 6rem;
 }
 
 .chapter-card {
@@ -191,6 +255,23 @@ h2 {
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
+}
+
+.chapter-card__meta-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.chapter-card__book-title,
+.chapter-card__title {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  font-family: inherit;
 }
 
 .chapter-content {
@@ -220,6 +301,11 @@ h2 {
     padding: 0.8rem;
   }
 
+  .book-cover {
+    padding: 1.4rem 1rem;
+    border-radius: 22px;
+  }
+
   .reading-header {
     padding: 0.95rem;
     border-radius: 20px;
@@ -241,7 +327,11 @@ h2 {
 
 @media (max-width: 600px) {
   .reading-header {
-    padding: 0.85rem;
+    display: none;
+  }
+
+  .page-shell {
+    padding-top: 0.4rem;
   }
 
   .eyebrow {
@@ -259,14 +349,14 @@ h2 {
   }
 
   .chapter-nav {
-    flex-direction: column;
-    align-items: stretch;
+    width: calc(100vw - 1rem);
     border-radius: 18px;
     padding: 0.55rem;
+    gap: 0.45rem;
   }
 
   .chapter-nav .button {
-    width: 100%;
+    flex-shrink: 0;
   }
 
   .chapter-pills {

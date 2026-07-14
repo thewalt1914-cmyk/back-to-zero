@@ -12,36 +12,33 @@
   </head>
   <body>
     <div class="page-shell">
-      <header class="reading-header">
-        <div class="reading-header__top">
-          <div>
-            <p class="eyebrow">Featured story</p>
-            <h1>Back to Zero</h1>
-            <p class="header-subtitle">A story about the people who get you there · By Tyler Walter</p>
-          </div>
+      <section id="book-cover" class="book-cover" aria-label="Book cover" hidden>
+        <div class="book-cover__inner">
+          <h1>Back to Zero</h1>
+          <p class="book-cover__subtitle">A story about the people who get you there</p>
+          <p class="book-cover__author">By Tyler Walter</p>
         </div>
-
-        <div class="progress-bar" aria-label="Reading progress">
-          <div id="progress-fill" class="progress-bar__fill"></div>
-        </div>
-
-        <div class="chapter-nav" aria-label="Chapter navigation">
-          <button id="prev-chapter" class="button button--ghost" type="button">← Previous</button>
-          <div id="chapter-pills" class="chapter-pills"></div>
-          <button id="next-chapter" class="button button--ghost" type="button">Next →</button>
-        </div>
-      </header>
+      </section>
 
       <main class="reader-layout">
         <section class="chapter-card">
           <div class="chapter-card__meta">
-            <span id="chapter-label"></span>
+            <div class="chapter-card__meta-group">
+              <span id="chapter-label"></span>
+              <span class="chapter-card__book-title">Back to Zero</span>
+              <span id="chapter-title" class="chapter-card__title"></span>
+            </div>
             <span id="chapter-count"></span>
           </div>
-          <h2 id="chapter-title"></h2>
           <div id="chapter-content" class="chapter-content"></div>
         </section>
       </main>
+    </div>
+
+    <div class="chapter-nav" aria-label="Chapter navigation">
+      <button id="prev-chapter" class="button button--ghost" type="button" aria-label="Previous chapter">←</button>
+      <div id="chapter-pills" class="chapter-pills"></div>
+      <button id="next-chapter" class="button button--ghost" type="button" aria-label="Next chapter">→</button>
     </div>
 
     <script src="script.js"></script>
