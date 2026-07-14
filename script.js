@@ -136,7 +136,6 @@ const progressFill = document.getElementById('progress-fill');
 const chapterPills = document.getElementById('chapter-pills');
 const prevButton = document.getElementById('prev-chapter');
 const nextButton = document.getElementById('next-chapter');
-const bookCover = document.getElementById('book-cover');
 
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -173,10 +172,6 @@ function renderChapter() {
   progressFill.style.width = `${((state.chapterIndex + 1) / chapters.length) * 100}%`;
   prevButton.disabled = state.chapterIndex === 0;
   nextButton.disabled = state.chapterIndex === chapters.length - 1;
-
-  const isChapterOne = state.chapterIndex === 0;
-  bookCover.hidden = !isChapterOne;
-  bookCover.style.display = isChapterOne ? 'block' : 'none';
 
   renderChapterPills();
   saveState();
